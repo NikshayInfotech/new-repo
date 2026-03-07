@@ -1,0 +1,27 @@
+name: GitHub Actions CI/CD Demo
+
+# 1. Trigger the workflow on every push to the main branch
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  # 2. Define a job named "build-and-test"
+  build-and-test:
+    # 3. Specify the runner (operating system)
+    runs-on: ubuntu-latest
+
+    steps:
+      # 4. Standard action to checkout your code so the runner can access it
+      - name: Checkout repository code
+        uses: actions/checkout@v4
+
+      # 5. Run a simple script (e.g., install dependencies or run tests)
+      - name: Run a one-line script
+        run: echo "Hello, the CI/CD pipeline is running!"
+
+      - name: Run a multi-line script
+        run: |
+          echo "Checking system environment..."
+          node -v
+          npm -v
